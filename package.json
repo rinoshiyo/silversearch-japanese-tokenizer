@@ -1,0 +1,28 @@
+{
+  "name": "silversearch-japanese-tokenizer",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Japanese tokenizer for Silversearch, the full-text search plug for SilverBullet",
+  "license": "MIT",
+  "author": "rinoshiyo",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rinoshiyo/silversearch-japanese-tokenizer.git"
+  },
+  "type": "module",
+  "scripts": {
+    "build": "tsc -p tsconfig.build.json",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "test": "npm run typecheck && vitest run",
+    "pretest": "node scripts/fetch-silversearch.mjs && npm run build"
+  },
+  "devDependencies": {
+    "@types/node": "^24.19.2",
+    "md-link-extractor": "^1.2.0",
+    "minisearch": "^7.2.0",
+    "search-query-parser": "^1.6.0",
+    "typescript": "^7.0.2",
+    "valibot": "^1.5.0",
+    "vitest": "^5.0.5"
+  }
+}

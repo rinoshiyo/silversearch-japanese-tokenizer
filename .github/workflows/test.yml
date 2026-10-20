@@ -1,0 +1,25 @@
+name: Test
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+
+      - uses: actions/setup-node@v7
+        with:
+          node-version-file: .node-version
+          cache: npm
+
+      - run: npm ci
+
+      # pretest で Silversearch のソースの取得と、配布する JS のビルドを行う
+      - run: npm test
+
+      # 配布する JS がソースから作り直したものと一致することを確かめる
+      - run: git diff --exit-code silversearch-japanese-tokenizer.js
